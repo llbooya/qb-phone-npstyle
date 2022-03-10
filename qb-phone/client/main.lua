@@ -2322,6 +2322,7 @@ end)
 
 RegisterNetEvent('hud:client:OnMoneyChange', function(type, amount, isMinus, reason)
     if type == "bank" then
+        reason = reason or ""
         if isMinus then
             SendNUIMessage({
                 action = "ChangeMoney_Wenmo",
