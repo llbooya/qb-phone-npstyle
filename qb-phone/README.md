@@ -80,7 +80,7 @@ end)
 ### Manual
 - Download the script and put it in the `[qb]` directory.
 - Import `qb-phone.sql` in your database
-- Add a third variable in your Functions.AddMoney and Functions.RemoveMoney which will be a reaosn for your "Wenmo" app to show why you sent or received money
+- Add a third paramater in your Functions.AddMoney and Functions.RemoveMoney which will be a reaosn for your "Wenmo" app to show why you sent or received money
 - Add the following code to your server.cfg/resouces.cfg
 ```
 ensure qb-core
