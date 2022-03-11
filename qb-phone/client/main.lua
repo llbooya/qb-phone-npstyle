@@ -853,25 +853,13 @@ RegisterNUICallback('DeleteImage', function(image,cb)
     cb(true)
 end)
 
-
--- RegisterNUICallback('track-vehicle', function(data, cb)
---     local veh = data.veh
---     if findVehFromPlateAndLocate(veh.plate) then
---         QBCore.Functions.Notify("Your vehicle has been marked", "success")
---     else
---         QBCore.Functions.Notify("This vehicle cannot be located", "error")
---     end
--- end)
-
 RegisterNUICallback('gps-vehicle-garage', function(data, cb)
-    local veh = data.veh
-    if veh.state == "In" then
-        QBCore.Functions.Notify('GPS set', "success")
-            local Garage = exports['qb-garages']:GetGarageNameLoc(veh.garage)
-            SetNewWaypoint(Garage.x, Garage.y)
-    else
-        QBCore.Functions.Notify('Your car has no garage', "success")
-    end
+local veh = data.veh
+if findVehFromPlateAndLocate(veh.plate) then
+    QBCore.Functions.Notify("Your vehicle has been marked", "success")
+else
+    QBCore.Functions.Notify("This vehicle cannot be located", "error")
+end
 end)
 
 RegisterNUICallback('DeleteContact', function(data, cb)
