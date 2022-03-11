@@ -2160,7 +2160,7 @@ RegisterNetEvent('qb-pings:client:AcceptPing', function(PingData, SenderData)
 end)
 
 RegisterNetEvent('qb-pings:client:SendLocation', function(PingData, SenderData)
-    QBCore.Functions.Notify('The location has been blipped on your map', 'success')
+    QBCore.Functions.Notify('Their location has been blipped on your map', 'success')
 
     CurrentPings[PingData.sender] = AddBlipForCoord(PingData.coords.x, PingData.coords.y, PingData.coords.z)
     SetBlipSprite(CurrentPings[PingData.sender], 280)
