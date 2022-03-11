@@ -960,7 +960,7 @@ RegisterNetEvent('qb-phone:server:UpdateTweets', function(NewTweets, TweetData)
         TweetData.firstName,
         TweetData.lastName,
         TweetData.message,
-        TweetData.url,
+        TweetData.url:gsub("[%<>\"()\' $]",""),
         TweetData.picture,
         TweetData.tweetId
     })
