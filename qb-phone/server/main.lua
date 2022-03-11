@@ -1211,7 +1211,7 @@ RegisterNetEvent('qb-pings:server:acceptping', function()
     local Player = QBCore.Functions.GetPlayer(src)
     if Pings[src] ~= nil then
         TriggerClientEvent('qb-pings:client:AcceptPing', src, Pings[src], QBCore.Functions.GetPlayer(Pings[src].sender))
-        TriggerClientEvent('QBCore:Notify', Pings[src].sender, Player.PlayerData.charinfo.firstname.." "..Player.PlayerData.charinfo.lastname.." accepted your ping!")
+        TriggerClientEvent('QBCore:Notify', Pings[src].sender, Player.PlayerData.charinfo.firstname.." "..Player.PlayerData.charinfo.lastname.." accepted your ping request!")
         Pings[src] = nil
     else
         TriggerClientEvent('QBCore:Notify', src, "You have no ping...", "error")
@@ -1222,7 +1222,7 @@ RegisterNetEvent('qb-pings:server:denyping', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Pings[src] ~= nil then
-        TriggerClientEvent('QBCore:Notify', Pings[src].sender, "Your ping has been rejected...", "error")
+        TriggerClientEvent('QBCore:Notify', Pings[src].sender, "Your ping request has been rejected...", "error")
         TriggerClientEvent('QBCore:Notify', src, "You turned down the ping...", "success")
         Pings[src] = nil
     else
@@ -1238,12 +1238,12 @@ RegisterNetEvent('qb-pings:server:SendPing', function(id, coords)
     if Target ~= nil then
         local OtherItem = Target.Functions.GetItemByName("phone")
         if OtherItem ~= nil then
-            TriggerClientEvent('QBCore:Notify', src, "You have sent a ping to "..Target.PlayerData.charinfo.firstname.." "..Target.PlayerData.charinfo.lastname)
+            TriggerClientEvent('QBCore:Notify', src, "You have requested the location of "..Target.PlayerData.charinfo.firstname.." "..Target.PlayerData.charinfo.lastname)
             Pings[id] = {
                 coords = coords,
                 sender = src,
             }
-            TriggerClientEvent('QBCore:Notify', id, "You have received a ping from "..Player.PlayerData.charinfo.firstname.." "..Player.PlayerData.charinfo.lastname..". Use the app to accept or reject!")
+            TriggerClientEvent('QBCore:Notify', id, "You have received a ping request from "..Player.PlayerData.charinfo.firstname.." "..Player.PlayerData.charinfo.lastname..". Use the app to allow or reject!")
             TriggerClientEvent('qb-phone:ping:client:UiUppers', id, true)
         else
             TriggerClientEvent('QBCore:Notify', src, "Could not send ping...", "error")
