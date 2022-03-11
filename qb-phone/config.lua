@@ -170,8 +170,8 @@ Config.PhoneApplications = {
     },
     ["crypto"] = {
         app = "crypto",
-        color = "#151515",
-        color2 = "#161616",
+        color = "#000000",
+        color2 = "#000000",
         icon = "fab fa-bitcoin",
         tooltipText = "Crypto",
         style = "font-size: 2.7vh";
