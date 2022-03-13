@@ -2,8 +2,6 @@
 Phone for QB-Core Framework. Edited for a NP-Style look with a few extra things, This file has been edited with the changes noted
 
 # Known Issues
-- Ping App doesn't work at longer ranges, only thing I'm really working on at the moment on it that will be pushed. If someone else figures out the issue earlier and wants to PR it, I will take it.
-- /p# command sharing to whole server, not something I'm actively attacking you can disable this and just verbally share your number
 
 # License
 
