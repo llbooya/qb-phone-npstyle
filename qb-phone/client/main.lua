@@ -2182,21 +2182,6 @@ RegisterNetEvent('qb-phone:ping:client:UiUppers', function(toggle)
     end
 end)
 
-
-RegisterNetEvent('qb-phone:client-annphonenumber', function(playerId, playerName, number)
-	local sourcePos = GetEntityCoords(GetPlayerPed(GetPlayerFromServerId(playerId)), false)
-    local pos = GetEntityCoords(PlayerPedId(), false)
-	local dist = #(pos - sourcePos)
-    if dist < 5.0 then
-		TriggerEvent('chat:addMessage', {
-			template = '<div class="chat-message" style="background-color: rgba(234, 135, 23, 0.50);">Number : <b>{0}</b></div>',
-			args = {" "..number}
-		})
-		
-    end
-end)
-
-
 RegisterNUICallback('CasinoAddBet', function(data)
     TriggerServerEvent('qb-phone:server:CasinoAddBet', data)
 end)
