@@ -2129,8 +2129,9 @@ end)
 local CurrentPings = {}
 
 RegisterNetEvent('qb-pings:client:DoPing', function(id)
-    local ped = PlayerPedId()
-    local pos = GetEntityCoords(ped)
+    local targetplayer = GetPlayerFromServerId(id)
+    local target = GetPlayerPed(targetplayer)
+    local pos = GetEntityCoords(target)
     local coords = {
         x = pos.x,
         y = pos.y,
