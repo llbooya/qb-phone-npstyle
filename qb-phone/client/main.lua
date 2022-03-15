@@ -2129,15 +2129,7 @@ end)
 local CurrentPings = {}
 
 RegisterNetEvent('qb-pings:client:DoPing', function(id)
-    local targetplayer = GetPlayerFromServerId(id)
-    local target = GetPlayerPed(targetplayer)
-    local pos = GetEntityCoords(target)
-    local coords = {
-        x = pos.x,
-        y = pos.y,
-        z = pos.z,
-    }
-    TriggerServerEvent('qb-pings:server:SendPing', id, coords)
+    TriggerServerEvent('qb-pings:server:SendPing', id)
 end)
 
 RegisterNetEvent('qb-pings:client:AcceptPing', function(PingData, SenderData)
