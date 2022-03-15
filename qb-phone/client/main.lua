@@ -2133,7 +2133,10 @@ RegisterNetEvent('qb-pings:client:DoPing', function(id)
 end)
 
 RegisterNetEvent('qb-pings:client:AcceptPing', function(PingData, SenderData)
-    TriggerServerEvent('qb-pings:server:SendLocation', PingData, SenderData)
+    local ped = PlayerPedId()
+    local pos = GetEntityCoords(ped)
+
+        TriggerServerEvent('qb-pings:server:SendLocation', PingData, SenderData)
 end)
 
 RegisterNetEvent('qb-pings:client:SendLocation', function(PingData, SenderData)
