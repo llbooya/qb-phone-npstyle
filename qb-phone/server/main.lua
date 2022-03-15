@@ -1230,10 +1230,12 @@ RegisterNetEvent('qb-pings:server:denyping', function()
     end
 end)
 
-RegisterNetEvent('qb-pings:server:SendPing', function(id, coords)
+RegisterNetEvent('qb-pings:server:SendPing', function(id)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local Target = QBCore.Functions.GetPlayer(id)
+    local ped = GetPlayerPed(id)
+    local coords = GetEntityCoords(ped)
 
     if Target ~= nil then
         local OtherItem = Target.Functions.GetItemByName("phone")
