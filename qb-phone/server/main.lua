@@ -1484,12 +1484,16 @@ RegisterNetEvent('qb-phone:server:wenmo_givemoney_toID', function(data)
     local src = source
     local Ply = QBCore.Functions.GetPlayer(src)
     local OtherPly = QBCore.Functions.GetPlayer(tonumber(data.ID))
-    local Amount = tonumber(data.Amount)
+    local newAmount = tostring(data.Amount)
     local Reason = data.Reason
+    for _, v in pairs(bannedCharacters) do
+        newAmount = string.gsub(newAmount, '%' .. v, '')
+    end
+    local amount = tonumber(newAmount)
     if OtherPly then
-        if Ply.PlayerData.money.bank then
-            Ply.Functions.RemoveMoney('bank', Amount, "Wenmo: "..Reason)
-            OtherPly.Functions.AddMoney('bank', Amount,"Wenmo: "..Reason)
+        if (Ply.PlayerData.money.bank - amount) >= 0 then
+            Ply.Functions.RemoveMoney('bank', amount, "Wenmo: "..Reason)
+            OtherPly.Functions.AddMoney('bank', amount,"Wenmo: "..Reason)
         else
             TriggerClientEvent('QBCore:Notify', src, 'You don\'t have enough money', 'error')
         end
