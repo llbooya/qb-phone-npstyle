@@ -2070,6 +2070,19 @@ RegisterNetEvent('qb-phone:refreshImages', function(images)
     PhoneData.Images = images
 end)
 
+RegisterNetEvent("qb-phone:client:CustomNotification", function(title, text, icon, color, timeout) -- Send a PhoneNotification to the phone from anywhere
+    SendNUIMessage({
+        action = "PhoneNotification",
+        PhoneNotify = {
+            title = title,
+            text = text,
+            icon = icon,
+            color = color,
+            timeout = timeout,
+        },
+    })
+end)
+
 
 -- Threads
 
