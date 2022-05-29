@@ -961,7 +961,7 @@ RegisterNetEvent('qb-phone:server:UpdateTweets', function(NewTweets, TweetData)
         TweetData.lastName,
         TweetData.message,
         TweetData.url:gsub("[%<>\"()\' $]",""),
-        TweetData.picture,
+        TweetData.picture:gsub("[%<>\"()\' $]",""),
         TweetData.tweetId
     })
     TriggerClientEvent('qb-phone:client:UpdateTweets', -1, src, NewTweets, TweetData, false)
