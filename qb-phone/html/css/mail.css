@@ -433,7 +433,7 @@
     color: white;
 }
 
-#advert-new-url{
+/* .advert-new-url{
     position: absolute;
     height: 4vh;
     margin: 0 auto;
@@ -443,7 +443,7 @@
     outline: none;
     resize: none;
     /* font-family: 'Poppins', sans-serif; */
-    padding: 0.87vh;
+    /* padding: 0.87vh;
     font-size: 1.4vh;
     top: 45vh;
     width: 22vh;
@@ -452,9 +452,9 @@
     border: 2px solid rgb(255, 154, 46);
 }
 
-#advert-new-url::-webkit-scrollbar {
+.advert-new-url::-webkit-scrollbar {
     display: none;
-}
+} */
 
 .new-advert-textarea {
     position: absolute;

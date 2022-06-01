@@ -1,7 +1,12 @@
 local phoneProp = 0
 local phoneModel = `prop_npc_phone_02`
+local nakresvideocall = false
 
-local function LoadAnimation(dict)
+function startStopVideoCallAnim()
+  nakresvideocall = not nakresvideocall
+end
+
+function LoadAnimation(dict)
 	RequestAnimDict(dict)
 	while not HasAnimDictLoaded(dict) do
 		Wait(1)
@@ -10,7 +15,7 @@ end
 
 local function CheckAnimLoop()
     CreateThread(function()
-        while PhoneData.AnimationData.lib ~= nil and PhoneData.AnimationData.anim ~= nil do
+        while PhoneData.AnimationData.lib ~= nil and PhoneData.AnimationData.anim ~= nil and not nakresvideocall do
             local ped = PlayerPedId()
             if not IsEntityPlayingAnim(ped, PhoneData.AnimationData.lib, PhoneData.AnimationData.anim, 3) then
                 LoadAnimation(PhoneData.AnimationData.lib)

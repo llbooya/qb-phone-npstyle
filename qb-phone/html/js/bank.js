@@ -132,6 +132,7 @@ $(document).on('click', '.pay-invoice', function(event){
         $.post('https://qb-phone/PayInvoice', JSON.stringify({
             sender: InvoiceData.sender,
             amount: InvoiceData.amount,
+            reason: InvoiceData.reason,
             society: InvoiceData.society,
             invoiceId: InvoiceData.id,
             senderCitizenId: InvoiceData.sendercitizenid
@@ -182,7 +183,7 @@ QB.Phone.Functions.LoadBankInvoices = function(invoices) {
     if (invoices !== null) {
         $(".bank-app-invoices-list").html("");
         $.each(invoices, function(i, invoice){
-            var Elem = '<div class="bank-app-invoice" id="invoiceid-'+i+'"> <div class="bank-app-invoice-title">'+invoice.society+' <span style="font-size: 1vh; color: gray;">(Sender: '+invoice.sender+')</span></div> <div class="bank-app-invoice-amount">&#36; '+invoice.amount+'</div> <div class="bank-app-invoice-buttons"> <i class="fas fa-check-circle pay-invoice"></i>  </div> </div>';
+            var Elem = '<div class="bank-app-invoice" id="invoiceid-'+i+'"> <div class="bank-app-invoice-title">'+invoice.society+' <span style="font-size: 1vh; color: gray;">(Sender: '+invoice.sender+')</span></div> <div class="bank-app-invoice-amount">&#36; '+invoice.amount+ ' | Reason: ' + invoice.reason +'</div> <div class="bank-app-invoice-buttons"> <i class="fas fa-check-circle pay-invoice"></i>  </div> </div>';
 
             $(".bank-app-invoices-list").append(Elem);
             $("#invoiceid-"+i).data('invoicedata', invoice);

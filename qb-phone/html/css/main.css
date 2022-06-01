@@ -130,6 +130,24 @@ body {
     position: absolute;
 }
 
+.phone-lock {
+    position: absolute;
+    height: 61.7vh;
+    width: 30.5vh;
+    bottom: 1vh;
+    border-radius: 3vh;
+    right: 0.5vh;
+    margin: 5vh;
+    overflow: hidden;
+    background-size: cover;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-color: black;
+    /* background-image: url('../img/backgrounds/default-qbcore.png'); */
+}
+
+
 .phone-background {
     height: 61.7vh;
     width: 30.5vh;
@@ -162,7 +180,32 @@ body {
     color: white !important;
 }
 
+#phone-time2 {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 3.1vh;
+    padding: 2.1vh 0 0 1vh;
+    float: left;
+    color: white !important;
+}
+
+.phone-lock-icon{
+    font-size: 3.1vh;
+    padding: 2.1vh 0 0 2.1vh;
+    float: left;
+    color: white !important;
+}
+
 #player-id {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.1vh;
+    padding: 2.1vh 0 0 1vh;
+    float: left;
+    color: white !important;
+}
+
+#phone-volume {
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     font-size: 1.1vh;
@@ -503,3 +546,66 @@ body {
     right: 0;
     bottom: 0;
 }
+
+#lockphone {
+    position: absolute;
+    z-index: 200;
+    width: 1.5vh;
+    height: 4.0vh;
+    bottom: 55.0vh;
+    right: 36.0vh; 
+    border-radius: 5px;
+    transition: all 0.1s linear;
+  }
+  
+  #lockphone:hover::before { 
+    content: attr(title); display: block; 
+    position:relative;
+    top:-20px;
+    font-size:12px;
+    color:white;
+    background-color:rgba(0, 0, 0, 0);
+    padding:2px;
+  }
+
+#volumeUp {
+    position: absolute;
+    z-index: 200;
+    width: 1.5vh;
+    height: 4.0vh;
+    bottom: 50.0vh;
+    right: 36.0vh; 
+    border-radius: 5px;
+    transition: all 0.1s linear;
+  }
+  
+  #volumeUp:hover::before { 
+    content: attr(title); display: block; 
+    position:relative;
+    top:-20px;
+    font-size:12px;
+    color:white;
+    background-color:rgba(0, 0, 0, 0);
+    padding:2px;
+  }
+  
+  #volumeDown {
+    position: absolute;
+    z-index: 200;
+    width: 1.5vh;
+    height: 5.0vh;
+    bottom: 43.0vh;
+    right: 36.0vh; 
+    border-radius: 5px;
+    transition: all 0.1s linear;
+  }
+  
+  #volumeDown:hover::before { 
+    content: attr(title); display: block; 
+    position:relative;
+    top:-20px;
+    font-size:12px;
+    color:white;
+    background-color:rgba(0, 0, 0, 0);
+    padding:2px;
+  }

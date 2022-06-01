@@ -10,13 +10,13 @@
 
 .twitter-header {
     position: absolute;
-    top: 5vh;
+    top: 2vh;
     width: 100%;
     height: 5vh;
     border-bottom: .2vh solid rgba(20, 23, 26, 0.37);
 }
 
-.twitter-header-tab {
+/* .twitter-header-tab {
     position: relative;
     float: left;
     width: 33.33%;
@@ -35,7 +35,7 @@
 .selected-twitter-header-tab {
     border-bottom: .2vh solid #1DA1F2;
     color: #1DA1F2;
-}
+} */
 
 .twitter-app-header {
     position: relative;
@@ -152,9 +152,29 @@
     border-radius: 50%;
 }
 
+.twt-icon {
+    position: absolute;
+    right: .5vh;
+    bottom: 0;
+    color: rgb(255, 255, 255);
+    transition: .05 linear;
+    z-index: 100;
+    pointer-events: all;
+}
+
 .tweet-reply {
     position: absolute;
-    right: 10px;
+    right: 2vh;
+    bottom: 0;
+    color: rgb(255, 255, 255);
+    transition: .05 linear;
+    z-index: 100;
+    pointer-events: all;
+}
+
+.tweet-like {
+    position: absolute;
+    right: 5px;
     bottom: 0;
     color: rgba(0, 0, 0, 0.8);
     transition: .05 linear;
@@ -162,8 +182,16 @@
     pointer-events: all;
 }
 
+.tweet-like:hover i {
+    color: rgb(210, 24, 24);
+}
+
+.twt-icon:hover i {
+    color: #1DA1F2;
+}
+
 .tweet-reply:hover i {
-    color: rgba(0, 0, 0, 1.0);
+    color: #1DA1F2;
 }
 
 .tweet-tweeter {
@@ -186,6 +214,59 @@
     padding-bottom: 1vh;
     overflow-wrap: break-word;
     word-wrap: break-word;
+}
+
+.twitter-homes {
+    position: absolute;
+    bottom: 0;
+    top: 2%;
+    right: 15%;
+    width: 5.5vh;
+    height: 5.5vh;
+    margin: 2.2vh;
+    z-index: 101;
+    border-radius: 50%;
+    text-align: center;
+    transition: .2s;
+}
+
+.twitter-homes > i:hover {
+    color: rgb(201, 201, 201);
+}
+
+.twitter-homes > i {
+    line-height: 5.5vh;
+    font-size: 2vh;
+    color: white;
+}
+
+.twitter-header-tab {
+    position: relative;
+    float: right;
+    bottom: 0;
+    top: 6%;
+    right: 18%;
+    width: 2.5vh;
+    height: 5.5vh;
+    z-index: 101;
+    border-radius: 50%;
+    text-align: center;
+    transition: .2s;
+}
+
+.twitter-header-tab > i:hover {
+    color: #1DA1F2;
+}
+
+.twitter-header-tab > i {
+    line-height: 5.5vh;
+    font-size: 2vh;
+    color: white;
+}
+
+.selected-twitter-header-tab {
+    /* border-bottom: .2vh solid #1DA1F2; */
+    color: #1DA1F2;
 }
 
 .twitter-new-tweet {
@@ -319,12 +400,14 @@
     color: black;
     padding-bottom: .3vh;
     transition: .2s;
+    font-weight: bold;
 }
 
 .hashtag-tag-text {
     color: black;
     padding-bottom: .3vh;
     transition: .2s;
+    font-weight: bold;
 }
 
 .twitter-hashtag {
@@ -335,7 +418,7 @@
     border-radius: 7px;
     left: 15px;
     margin-bottom: 10px;
-    background-color: rgb(27, 149, 224);;
+    background-color: #1DA1F2;
     transition: all 0.2s ease 0s;
 }
 

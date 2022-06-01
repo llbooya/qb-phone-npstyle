@@ -78,6 +78,7 @@
 .bank-app-invoice {
     position: relative;
     height: 6vh;
+    max-height: 15vh;
     width: 100%;
     letter-spacing: .05vh;
     border-bottom: .2vh solid #363d4b;

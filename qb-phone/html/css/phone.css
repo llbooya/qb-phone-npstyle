@@ -37,7 +37,7 @@
 .phone-app-footer-button {
     position: relative;
     height: 100%;
-    width: 50%;
+    width: 33%;
     text-align: center;
     float: left;
     /* font-family: 'Poppins', sans-serif; */
@@ -1055,7 +1055,20 @@
     height: 100%;
     width: 100%;
     top: 0;
-    background: rgb(36, 36, 36);
+    background: rgb(32, 39, 49);
+}
+
+.phone-suggest-firstletter {
+    position: absolute;
+    height: 3.4vh;
+    width: 3.4vh;
+    margin: .5vh;
+    margin-left: .6vh;
+    text-align: center;
+    line-height: 3.5vh;
+    border-radius: 50%;
+    /* font-family: 'Poppins', sans-serif; */
+    color: white;
 }
 
 .phone-suggestedcontacts-header {
@@ -1091,13 +1104,16 @@
 
 .suggested-contact {
     position: relative;
-    height: 6vh;
-    width: 100%;
-    margin-bottom: 10px;
-    background: rgba(23, 23, 23, 90%);
+    width: 90%;
+    color: white;
+    left: 15px;
+    height: 4.5vh;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    background-color: #2c465f;
     border-radius: 0.15rem;
-    box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
-    transition: .05s ease-in-out;
+    box-shadow: 0rem 0rem 0.1rem 0.01rem #0000008e;
+    border-bottom: .1vh solid #f5f5f5ad;
 }
 
 .suggested-contact:hover {
@@ -1115,16 +1131,17 @@
 .suggested-name {
     position: absolute;
     left: 5vh;
-    top: 2.1vh;
+    line-height: 4.5vh;
     /* font-family: 'Poppins', sans-serif; */
-    color: white;
-    font-size: 1.3vh;
+    font-size: 1.4vh;
 }
 
 .suggested-number {
+    position: absolute;
+    left: 15vh;
+    line-height: 4.5vh;
     /* font-family: 'Poppins', sans-serif; */
-    color: white;
-    font-size: 1.2vh;
+    font-size: 1.4vh;
 }
 
 .noselect {
@@ -1203,9 +1220,18 @@
 .box-new-red:hover{
     background: #c27e47;
 }
+
+.box-new-blue{
+    background: #747be0;
+    margin-left: 5%;
+}
+.box-new-blue:hover{
+    background: #4f55ac;
+}
+
 .box-new-green{
     background: #8ee074;
-    margin-left: 27%;
+    margin-left: 5%;
 }
 .box-new-green:hover{
     background: #6cac59;
@@ -1217,4 +1243,92 @@
 
 .phone-new-input-class:focus {
     border-bottom: .1vh solid #8ee074;
+}
+
+/*? Video call */
+
+#phone-call-ongoing-videocall {
+    display: none;
+    position: absolute;
+    top: 2vh;
+    left: 19vh;
+    /* transform: rotate(90deg); */
+    color: #ffffffe5;
+    background-color: #2ecc70e5;
+    padding: 0.7vh;
+    font-size: 1.2vh;
+    border-radius: 50%;
+    transition: .1s;
+    animation: pulse 2s infinite;
+    /* height: 1vh;
+    width: 1vh; */
+}
+#phone-call-ongoing-videocall:hover {
+    color: #ffffff;
+    background-color: #2ecc70e5;
+    transition: .1s;
+}
+  
+  #phone-call-ongoing-videocall-close{
+    position: absolute;
+    align-self: center;
+    bottom: 3vh;
+    left: 5%;
+    color: #fff;
+    background-color: #ff0000;
+    padding: 1.5vh;
+    font-size: 2.5vh;
+    border-radius: 50%;
+    transition: background-color 0.1s ease-in-out;
+    animation: pulse 2s infinite;
+  }
+  
+  #ongoing-cancel:hover {
+    transition: 0.2s;
+  }
+
+
+  #local-video {
+    position: absolute;
+    right: 1vh;
+    top: 5vh;
+    width: 120px;
+    height: 140px;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+}
+
+#remote-video {
+  position: absolute;
+  /* background-color: pink; */
+  object-fit: fill;
+}
+
+.phone-call-videocall{
+  display: none;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+#swap-cam{
+    position: absolute;
+    top: 19vh;
+    right: 2vh;
+    background-color: #137b6c;
+    border: none;
+    width: 3vh;
+    color: white;
+    height: 2vh;
+    z-index: 2;
+}
+
+#vaid-video {
+  display: none;
+  position: absolute;
+  top: 24vh;
+  /* z-index: 1; */
+  font-size: 90px;
+  right: 10vh;
+  color: white;
 }

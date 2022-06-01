@@ -15,7 +15,7 @@ function SetupCryptoData(Crypto) {
     CryptoData.Worth = Crypto.Worth;
     CryptoData.WalletId = Crypto.WalletId;
 
-    $(".crypto-action-page-wallet").html("Wallet: "+CryptoData.Portfolio+" bit('s)");
+    $(".crypto-action-page-wallet").html("Wallet: "+CryptoData.Portfolio+" shung('s)");
     $(".crypto-walletid").html(CryptoData.WalletId);
     $(".cryptotab-course-list").html("");
     if (CryptoData.History.length > 0) {
@@ -48,7 +48,7 @@ function UpdateCryptoData(Crypto) {
     CryptoData.Worth = Crypto.Worth;
     CryptoData.WalletId = Crypto.WalletId;
 
-    $(".crypto-action-page-wallet").html("Wallet: "+CryptoData.Portfolio+" bit('s)");
+    $(".crypto-action-page-wallet").html("Wallet: "+CryptoData.Portfolio+" shung('s)");
     $(".crypto-walletid").html(CryptoData.WalletId);
     $(".cryptotab-course-list").html("");
     if (CryptoData.History.length > 0) {
@@ -71,6 +71,7 @@ function UpdateCryptoData(Crypto) {
     }
 
     $(".crypto-portofolio").find('p').html(CryptoData.Portfolio);
+    $(".info-crypto").find('p').html(CryptoData.Portfolio);
     $(".crypto-course").find('p').html("$"+CryptoData.Worth);
     $(".crypto-volume").find('p').html("$"+Math.ceil(CryptoData.Portfolio * CryptoData.Worth));
 }
@@ -183,14 +184,14 @@ $(document).on('click', '#buy-crypto', function(e){
                     QB.Phone.Notifications.Add("fas fa-university", "Bank", "&#36; "+Price+",- has been withdrawn from your balance!", "#badc58", 2500);
                     $('#crypto-buy-btn').fadeOut(350);
                 } else {
-                    QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough money..", "#badc58", 1500);
+                    QB.Phone.Notifications.Add("fas fa-chess-knight", "Crypto", "You don't have enough money..", "#badc58", 1500);
                 }
             });
         } else {
-            QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough money..", "#badc58", 1500);
+            QB.Phone.Notifications.Add("fas fa-chess-knight", "Crypto", "You don't have enough money..", "#badc58", 1500);
         }
     } else {
-        QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "Fill out all fields!", "#badc58", 1500);
+        QB.Phone.Notifications.Add("fas fa-chess-knight", "Crypto", "Fill out all fields!", "#badc58", 1500);
     }
 });
 
@@ -215,14 +216,14 @@ $(document).on('click', '#sell-crypto', function(e){
                     QB.Phone.Notifications.Add("fas fa-university", "Bank", "&#36; "+Price+",- has been added to your balance!", "#badc58", 2500);
                     $('#crypto-sell-btn').fadeOut(350);
                 } else {
-                    QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough bits..", "#badc58", 1500);
+                    QB.Phone.Notifications.Add("fas fa-chess-knight", "Crypto", "You don't have enough shungs..", "#badc58", 1500);
                 }
             });
         } else {
-            QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough bits..", "#badc58", 1500);
+            QB.Phone.Notifications.Add("fas fa-chess-knight", "Crypto", "You don't have enough shungs..", "#badc58", 1500);
         }
     } else {
-        QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "Fill out all fields!", "#badc58", 1500);
+        QB.Phone.Notifications.Add("fas fa-chess-knight", "Crypto", "Fill out all fields!", "#badc58", 1500);
     }
     CloseCryptoPage();
     e.handled = false;
@@ -243,7 +244,7 @@ $(document).on('click', '#transfer-crypto', function(e){
                     WalletId: WalletId,
                 }), function(CryptoData){
                     if (CryptoData == "notenough") {
-                        QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough bits..", "#badc58", 1500);
+                        QB.Phone.Notifications.Add("fas fa-chess-knight", "Crypto", "You don't have enough shungs..", "#badc58", 1500);
                     } else if (CryptoData == "notvalid") {
                         QB.Phone.Notifications.Add("fas fa-university", "Crypto", "this Wallet-ID doesn't exist!", "#badc58", 2500);
                     } else {
@@ -257,10 +258,10 @@ $(document).on('click', '#transfer-crypto', function(e){
                 QB.Phone.Notifications.Add("fas fa-university", "Crypto", "You can't transfer to yourself..", "#badc58", 2500);
             }
         } else {
-            QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough bits..", "#badc58", 1500);
+            QB.Phone.Notifications.Add("fas fa-chess-knight", "Crypto", "You don't have enough shungs..", "#badc58", 1500);
         }
     } else {
-        QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "Fill out all fields!!", "#badc58", 1500);
+        QB.Phone.Notifications.Add("fas fa-chess-knight", "Crypto", "Fill out all fields!!", "#badc58", 1500);
     }
 });
 

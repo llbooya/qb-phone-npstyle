@@ -2,7 +2,13 @@ Config = Config or {}
 Config.BillingCommissions = { -- This is a percentage (0.10) == 10%
     mechanic = 0.10
 }
-Config.Linux = true -- True if linux
+-------------------------------
+Config.ChatSeller = 'csb_sol'
+Config.SellerLocation = vector4(342.37, -870.06, 28.29, 354.89)
+Config.PhoneHackItem = 'phone_dongle'
+--------------------------------
+
+Config.Linux = false -- True if linux
 Config.TweetDuration = 24 -- How many hours to load tweets (12 will load the past 12 hours of tweets)
 Config.RepeatTimeout = 2000
 Config.CallRepeats = 10
@@ -89,7 +95,7 @@ Config.PhoneApplications = {
         app = "advert",
         color = "#ffc900",
         color2 = "#f7c816",
-        icon = "fas fa-bullhorn",
+        icon = "fab fa-adversal",
         tooltipText = "Advertisements",
         style = "font-size: 2vh";
         job = false,
@@ -290,6 +296,18 @@ Config.PhoneApplications = {
         slot = 23,
         Alerts = 0,
     },
+    ["group-chats"] = {
+        app = "group-chats",
+        color = "rgb(77 77 78)",
+        color2 = "#242830",
+        icon = "fab fa-discord",
+        tooltipText = "Discordia",
+        tooltipPos = "bottom",
+        job = false,
+        blockedjobs = {},
+        slot = 24,
+        Alerts = 0,
+    },
     ["meos"] = {
         app = "meos",
         color = "#004682",
@@ -298,7 +316,7 @@ Config.PhoneApplications = {
         tooltipText = "MDT",
         job = "police",
         blockedjobs = {},
-        slot = 24,
+        slot = 25,
         Alerts = 0,
     },
 
@@ -377,10 +395,5 @@ Config.JobCenter = {
         job = "garbage",
         label = "Trash Collector",
         Coords = {-313.85, -1522.82},
-    },
-    [6] = {
-        job = "bus",
-        label = "Bus Driver",
-        Coords = {462.22, -641.15},
     },
 }

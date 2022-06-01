@@ -129,7 +129,7 @@ $(document).on('click', '#advert-sendmessage-chat', function(e){
     e.preventDefault();
 
     var Advert = $(".advert-box-textt-input").val();
-    let picture = $('#advert-new-url').val();
+    let picture = $('.advert-new-url').val();
 
     if (Advert !== "") {
         $('#advert-box-textt').fadeOut(350);
@@ -139,6 +139,15 @@ $(document).on('click', '#advert-sendmessage-chat', function(e){
                 url: null
             }));
             ClearInputNew()
+        
+        }
+        else {
+            $.post('https://qb-phone/PostAdvert', JSON.stringify({
+                message: Advert,
+                url: picture
+            }));
+            ClearInputNew()
+        
         }
     } else {
         QB.Phone.Notifications.Add("fas fa-ad", "Advertisement", "You can\'t post an empty ad!", "#ff8f1a", 2000);
@@ -154,7 +163,7 @@ $(document).on('click','#new-advert-photo',function(e){
     e.preventDefault();
     $.post('https://qb-phone/TakePhoto',function(url){
         if(url){
-            $('#advert-new-url').val(url)
+            $('.advert-new-url').val(url)
         }
     })
     QB.Phone.Functions.Close();
@@ -174,7 +183,7 @@ $(document).on('click', '#new-advert-back', function(e){
 $(document).on('click', '#new-advert-submit', function(e){
     e.preventDefault();
     var Advert = $(".new-advert-textarea").val();
-    let picture = $('#advert-new-url').val();
+    let picture = $('.advert-new-url').val();
 
     if (Advert !== "") {
         $(".advert-home").animate({
@@ -194,7 +203,7 @@ $(document).on('click', '#new-advert-submit', function(e){
                 url: picture
             }));
         }
-        $('#advert-new-url').val("")
+        $('.advert-new-url').val("")
         $(".new-advert-textarea").val("");
     } else {
         QB.Phone.Notifications.Add("fas fa-ad", "Advertisement", "You can\'t post an empty ad!", "#ff8f1a", 2000);

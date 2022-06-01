@@ -85,7 +85,7 @@
 .crypto-header {
     position: absolute;
     width: 100%;
-    height: 18.5vh;
+    height: 10.5vh;
     top: 5vh;
     text-align: center;
 }
@@ -111,12 +111,12 @@
 }
 
 .crypto-header-footer-item-selected {
-    border-bottom: .2vh solid #8ee074;
+    border-bottom: .4vh solid #8ee074;
 }
 
 .crypto-page {
     position: absolute;
-    height: 57%;
+    height: 72%;
     width: 100%;
     background: #202731;
     bottom: 10px;
@@ -317,6 +317,20 @@
     display: none;
 }
 
+.cryptotab-general-action2 {
+    position: relative;
+    color: white;
+    width: 86%;
+    height: 6vh;
+    margin-left: 6.5%;
+    margin-top: 2%;
+    font-family: Poppins, sans-serif;
+    transition: all 0.05s linear 0s;
+    background: #2c465f;
+    border-radius: 0.15rem;
+    box-shadow: 0rem 0rem 0.2rem 0.02rem #000000a6;
+}
+
 .cryptotab-general-action {
     position: relative;
     color: white;
@@ -336,6 +350,14 @@
     left: 1.25vh;
     line-height: 6vh;
     font-size: 2vh;
+}
+
+
+.cryptotab-general-action2 > i {
+    position: absolute;
+    left: 1.3vh;
+    line-height: 6vh;
+    font-size: 3vh;
 }
 
 .cryptotab-general-action-title {

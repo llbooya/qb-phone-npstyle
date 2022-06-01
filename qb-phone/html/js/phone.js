@@ -96,38 +96,43 @@ $(document).on('click', '.phone-recent-call', function(e){
         Anonymous: QB.Phone.Data.AnonymousCall,
     }), function(status){
         if (cData.number !== QB.Phone.Data.PlayerData.charinfo.phone) {
-            if (status.IsOnline) {
-                if (status.CanCall) {
-                    if (!status.InCall) {
-                        if (QB.Phone.Data.AnonymousCall) {
-                            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You started a anonymous call!");
+            if (status.lockedt) {
+                if (status.IsOnline) {
+                    if (status.CanCall) {
+                        if (!status.InCall) {
+                            if (QB.Phone.Data.AnonymousCall) {
+                                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You started a anonymous call!");
+                            }
+                            $(".phone-call-outgoing").css({"display":"block"});
+                            $(".phone-call-incoming").css({"display":"none"});
+                            $(".phone-call-ongoing").css({"display":"none"});
+                            $(".phone-call-outgoing-caller").html(cData.name);
+                            QB.Phone.Functions.HeaderTextColor("white", 400);
+                            QB.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
+                            setTimeout(function(){
+                                $(".phone-app").css({"display":"none"});
+                                QB.Phone.Animations.TopSlideDown('.phone-application-container', 400, -160);
+                                QB.Phone.Functions.ToggleApp("phone-call", "block");
+                                $(".phone-currentcall-container").css({"display":"block"});
+                                $("#incoming-answer").css({"display":"none"});
+                                $("#phone-call-ongoing-videocall").css({"display":"none"});
+                            }, 450);
+
+                            CallData.name = cData.name;
+                            CallData.number = cData.number;
+
+                            QB.Phone.Data.currentApplication = "phone-call";
+                        } else {
+                            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
                         }
-                        $(".phone-call-outgoing").css({"display":"none"});
-                        $(".phone-call-incoming").css({"display":"none"});
-                        $(".phone-call-ongoing").css({"display":"none"});
-                        $(".phone-call-outgoing-caller").html(cData.name);
-                        QB.Phone.Functions.HeaderTextColor("white", 400);
-                        QB.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
-                        setTimeout(function(){
-                            $(".phone-app").css({"display":"none"});
-                            QB.Phone.Animations.TopSlideDown('.phone-application-container', 400, -160);
-                            QB.Phone.Functions.ToggleApp("phone-call", "block");
-                            $(".phone-currentcall-container").css({"display":"block"});
-                            $("#incoming-answer").css({"display":"none"});
-                        }, 450);
-
-                        CallData.name = cData.name;
-                        CallData.number = cData.number;
-
-                        QB.Phone.Data.currentApplication = "phone-call";
                     } else {
-                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
+                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is busy!");
                     }
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is busy!");
+                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
                 }
             } else {
-                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
+                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person's phone is turned off");
             }
         } else {
             QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You can't call yourself!");
@@ -156,37 +161,42 @@ $(document).on('click', "#phone-number-call-free-btn", function(e){
             Anonymous: QB.Phone.Data.AnonymousCall,
         }), function(status){
             if (cData.number !== QB.Phone.Data.PlayerData.charinfo.phone) {
-                if (status.IsOnline) {
-                    if (status.CanCall) {
-                        if (!status.InCall) {
-                            $('.phone-new-box-body').fadeOut(350);
-                            ClearInputNew()
-                            $(".phone-call-outgoing").css({"display":"none"});
-                            $(".phone-call-incoming").css({"display":"none"});
-                            $(".phone-call-ongoing").css({"display":"none"});
-                            $(".phone-call-outgoing-caller").html(cData.name);
-                            QB.Phone.Functions.HeaderTextColor("white", 400);
-                            QB.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
-                            setTimeout(function(){
-                                $(".phone-app").css({"display":"none"});
-                                QB.Phone.Animations.TopSlideDown('.phone-application-container', 400, -160);
-                                QB.Phone.Functions.ToggleApp("phone-call", "block");
-                                $(".phone-currentcall-container").css({"display":"block"});
-                                $("#incoming-answer").css({"display":"none"});
-                            }, 450);
+                if (status.lockedt) {
+                    if (status.IsOnline) {
+                        if (status.CanCall) {
+                            if (!status.InCall) {
+                                $('.phone-new-box-body').fadeOut(350);
+                                ClearInputNew()
+                                $(".phone-call-outgoing").css({"display":"none"});
+                                $(".phone-call-incoming").css({"display":"none"});
+                                $(".phone-call-ongoing").css({"display":"none"});
+                                $(".phone-call-outgoing-caller").html(cData.name);
+                                QB.Phone.Functions.HeaderTextColor("white", 400);
+                                QB.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
+                                setTimeout(function(){
+                                    $(".phone-app").css({"display":"none"});
+                                    QB.Phone.Animations.TopSlideDown('.phone-application-container', 400, -160);
+                                    QB.Phone.Functions.ToggleApp("phone-call", "block");
+                                    $(".phone-currentcall-container").css({"display":"block"});
+                                    $("#incoming-answer").css({"display":"none"});
+                                    $("#phone-call-ongoing-videocall").css({"display":"none"});
+                                }, 450);
 
-                            CallData.name = cData.name;
-                            CallData.number = cData.number;
+                                CallData.name = cData.name;
+                                CallData.number = cData.number;
 
-                            QB.Phone.Data.currentApplication = "phone-call";
+                                QB.Phone.Data.currentApplication = "phone-call";
+                            } else {
+                                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
+                            }
                         } else {
-                            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
+                            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is busy!");
                         }
                     } else {
-                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is busy!");
+                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
                     }
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
+                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person's phone is turned off");
                 }
             } else {
                 QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You can't call yourself!");
@@ -211,35 +221,40 @@ $(document).on('click', ".phone-keypad-key-call", function(e){
         Anonymous: QB.Phone.Data.AnonymousCall,
     }), function(status){
         if (cData.number !== QB.Phone.Data.PlayerData.charinfo.phone) {
-            if (status.IsOnline) {
-                if (status.CanCall) {
-                    if (!status.InCall) {
-                        $(".phone-call-outgoing").css({"display":"none"});
-                        $(".phone-call-incoming").css({"display":"none"});
-                        $(".phone-call-ongoing").css({"display":"none"});
-                        $(".phone-call-outgoing-caller").html(cData.name);
-                        QB.Phone.Functions.HeaderTextColor("white", 400);
-                        QB.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
-                        setTimeout(function(){
-                            $(".phone-app").css({"display":"none"});
-                            QB.Phone.Animations.TopSlideDown('.phone-application-container', 400, -160);
-                            QB.Phone.Functions.ToggleApp("phone-call", "block");
-                            $(".phone-currentcall-container").css({"display":"block"});
-                            $("#incoming-answer").css({"display":"none"});
-                        }, 450);
+            if (status.lockedt) {
+                if (status.IsOnline) {
+                    if (status.CanCall) {
+                        if (!status.InCall) {
+                            $(".phone-call-outgoing").css({"display":"none"});
+                            $(".phone-call-incoming").css({"display":"none"});
+                            $(".phone-call-ongoing").css({"display":"none"});
+                            $(".phone-call-outgoing-caller").html(cData.name);
+                            QB.Phone.Functions.HeaderTextColor("white", 400);
+                            QB.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
+                            setTimeout(function(){
+                                $(".phone-app").css({"display":"none"});
+                                QB.Phone.Animations.TopSlideDown('.phone-application-container', 400, -160);
+                                QB.Phone.Functions.ToggleApp("phone-call", "block");
+                                $(".phone-currentcall-container").css({"display":"block"});
+                                $("#incoming-answer").css({"display":"none"});
+                                $("#phone-call-ongoing-videocall").css({"display":"none"});
+                            }, 450);
 
-                        CallData.name = cData.name;
-                        CallData.number = cData.number;
+                            CallData.name = cData.name;
+                            CallData.number = cData.number;
 
-                        QB.Phone.Data.currentApplication = "phone-call";
+                            QB.Phone.Data.currentApplication = "phone-call";
+                        } else {
+                            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
+                        }
                     } else {
-                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
+                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is busy!");
                     }
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is busy!");
+                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
                 }
             } else {
-                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
+                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person's phone is turned off");
             }
         } else {
             QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You can't call yourself!");
@@ -554,35 +569,40 @@ SetupCall = function(cData) {
         Anonymous: QB.Phone.Data.AnonymousCall,
     }), function(status){
         if (cData.number !== QB.Phone.Data.PlayerData.charinfo.phone) {
-            if (status.IsOnline) {
-                if (status.CanCall) {
-                    if (!status.InCall) {
-                        $(".phone-call-outgoing").css({"display":"none"});
-                        $(".phone-call-incoming").css({"display":"none"});
-                        $(".phone-call-ongoing").css({"display":"none"});
-                        $(".phone-call-outgoing-caller").html(cData.name);
-                        QB.Phone.Functions.HeaderTextColor("white", 400);
-                        QB.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
-                        setTimeout(function(){
-                            $(".phone-app").css({"display":"none"});
-                            QB.Phone.Animations.TopSlideDown('.phone-application-container', 400, -160);
-                            QB.Phone.Functions.ToggleApp("phone-call", "block");
-                            $(".phone-currentcall-container").css({"display":"block"});
-                            $("#incoming-answer").css({"display":"none"});
-                        }, 450);
+            if (status.lockedt) {
+                if (status.IsOnline) {
+                    if (status.CanCall) {
+                        if (!status.InCall) {
+                            $(".phone-call-outgoing").css({"display":"none"});
+                            $(".phone-call-incoming").css({"display":"none"});
+                            $(".phone-call-ongoing").css({"display":"none"});
+                            $(".phone-call-outgoing-caller").html(cData.name);
+                            QB.Phone.Functions.HeaderTextColor("white", 400);
+                            QB.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
+                            setTimeout(function(){
+                                $(".phone-app").css({"display":"none"});
+                                QB.Phone.Animations.TopSlideDown('.phone-application-container', 400, -160);
+                                QB.Phone.Functions.ToggleApp("phone-call", "block");
+                                $(".phone-currentcall-container").css({"display":"block"});
+                                $("#incoming-answer").css({"display":"none"});
+                                $("#phone-call-ongoing-videocall").css({"display":"none"});
+                            }, 450);
 
-                        CallData.name = cData.name;
-                        CallData.number = cData.number;
+                            CallData.name = cData.name;
+                            CallData.number = cData.number;
 
-                        QB.Phone.Data.currentApplication = "phone-call";
+                            QB.Phone.Data.currentApplication = "phone-call";
+                        } else {
+                            QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
+                        }
                     } else {
-                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You're already in a call!");
+                        QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is in a call!");
                     }
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is in a call!");
+                    QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
                 }
             } else {
-                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person is not available!");
+                QB.Phone.Notifications.Add("fas fa-phone", "Phone", "This person's phone is turned off");
             }
         } else {
             QB.Phone.Notifications.Add("fas fa-phone", "Phone", "You can't call your own number!");
@@ -620,6 +640,7 @@ $(document).on('click', '#ongoing-cancel', function(e){
     e.preventDefault();
 
     $.post('https://qb-phone/CancelOngoingCall');
+    
 });
 
 IncomingCallAlert = function(CallData, Canceled, AnonymousCall) {
@@ -632,6 +653,12 @@ IncomingCallAlert = function(CallData, Canceled, AnonymousCall) {
                 if (AnonymousCall) {
                     Label = "You're being called by a anonymous person"
                 }
+                // $(".call-notifications-title").html("Incoming Call");
+                // $(".call-notifications-content").html(Label);
+                // $(".call-notifications").css({"display":"block"});
+                // $(".call-notifications").animate({
+                //     right: 5+"vh"
+                // }, 400);
                 $(".phone-call-outgoing").css({"display":"none"});
                 $(".phone-call-incoming").css({"display":"block"});
                 $(".phone-call-ongoing").css({"display":"none"});
@@ -642,6 +669,10 @@ IncomingCallAlert = function(CallData, Canceled, AnonymousCall) {
                 $("."+QB.Phone.Data.currentApplication+"-app").css({"display":"none"});
                 $(".phone-call-app").css({"display":"none"});
                 QB.Phone.Animations.TopSlideDown('.phone-application-container', 400, -160);
+                // $(".phone-call-app").css({"display":"block"});
+                // setTimeout(function(){
+                //     QB.Phone.Animations.TopSlideDown('.phone-application-container', 400, 0);
+                // }, 400);
             }, 400);
 
             QB.Phone.Data.currentApplication = "phone-call";
@@ -683,9 +714,12 @@ QB.Phone.Functions.SetupCurrentCall = function(cData) {
         if (cData.CallType == "incoming") {
             $(".phone-currentcall-title").html("Incoming call");
             $("#incoming-answer").css({"display":"block"});
+            $("#phone-call-ongoing-videocall").css({"display":"none"});
         } else if (cData.CallType == "outgoing") {
             $(".phone-currentcall-title").html("Outgoing call");
+            $("#phone-call-ongoing-videocall").css({"display":"none"});
         } else if (cData.CallType == "ongoing") {
+            $("#phone-call-ongoing-videocall").css({"display":"block"});
             $(".phone-currentcall-title").html("Calling ("+cData.CallTime+")");
         }
 
@@ -694,6 +728,36 @@ QB.Phone.Functions.SetupCurrentCall = function(cData) {
         $(".phone-currentcall-container").css({"display":"none"});
     }
 }
+
+$(document).on('click', '#phone-call-ongoing-videocall', function(e){
+    e.preventDefault();
+
+    if (CallData.CallType == "incoming") {
+        $(".phone-call-incoming").css({"display":"block"});
+        $("#incoming-answer").css({"display":"block"});
+        $("#phone-call-ongoing-videocall").css({"display":"none"});
+        $(".phone-call-outgoing").css({"display":"none"});
+        $(".phone-call-ongoing").css({"display":"none"});
+    } else if (CallData.CallType == "outgoing") {
+        $(".phone-call-incoming").css({"display":"none"});
+        $(".phone-call-outgoing").css({"display":"block"});
+        $(".phone-call-ongoing").css({"display":"none"});
+        $("#phone-call-ongoing-videocall").css({"display":"none"});
+    } else if (CallData.CallType == "ongoing") {
+        $(".phone-call-incoming").css({"display":"none"});
+        $(".phone-call-outgoing").css({"display":"none"});
+        $(".phone-call-ongoing").css({"display":"block"});
+        $("#phone-call-ongoing-videocall").css({"display":"block"});
+    }
+    $(".phone-call-ongoing-caller").html(CallData.name);
+
+    // QB.Phone.Functions.HeaderTextColor("white", 500);
+    QB.Phone.Animations.TopSlideDown('.phone-application-container', 500, 0);
+    QB.Phone.Animations.TopSlideDown('.phone-call-app', 500, 0);
+    QB.Phone.Functions.ToggleApp("phone-call", "block");
+
+    QB.Phone.Data.currentApplication = "phone-call";
+});
 
 $(document).on('click', '#incoming-answer', function(e){
     e.preventDefault();
@@ -705,6 +769,7 @@ $(document).on('click', '#incoming-answer', function(e){
 QB.Phone.Functions.AnswerCall = function(CallData) {
     $(".phone-call-incoming").css({"display":"none"});
     $(".phone-call-outgoing").css({"display":"none"});
+    $("#phone-call-ongoing-videocall").css({"display":"block"});
     $(".phone-call-ongoing").css({"display":"block"});
     $(".phone-call-ongoing-caller").html(CallData.TargetData.name);
 
@@ -717,8 +782,8 @@ QB.Phone.Functions.SetupSuggestedContacts = function(Suggested) {
     if (AmountOfSuggestions > 0) {
         $(".amount-of-suggested-contacts").html(AmountOfSuggestions + " contacts");
         Suggested = Suggested.reverse();
-        $.each(Suggested, function(index, suggest){
-            var elem = '<div class="suggested-contact" id="suggest-'+index+'"> <i class="fas fa-exclamation-circle"></i> <span class="suggested-name">'+suggest.name[0]+' '+suggest.name[1]+' &middot; <span class="suggested-number">'+suggest.number+'</span></span> </div>';
+        $.each(Suggested, function(index, suggest){ 
+            var elem = '<div class="suggested-contact" id="suggest-'+index+'"><div class="phone-suggest-firstletter" style="background-color: whitesmoke;">'+'<i style="color: rgb(44, 70, 95); font-size:2.4vh; margin-top:15%;" class="fas fa-user"></i>'+'</div><div class="suggested-name">'+suggest.name[0]+' '+suggest.name[1]+'</div><div class="suggested-number">'+suggest.number+'</div></div>';
             $(".suggested-contacts").append(elem);
             $("#suggest-"+index).data('SuggestionData', suggest);
         });
@@ -726,6 +791,48 @@ QB.Phone.Functions.SetupSuggestedContacts = function(Suggested) {
         $(".amount-of-suggested-contacts").html("0 contacts");
     }
 }
+
+$(document).on('click', '#add-contact-save', function(e){
+    e.preventDefault();
+
+    var ContactName = DOMPurify.sanitize($(".phone-add-contact-name").val() , {
+        ALLOWED_TAGS: [],
+        ALLOWED_ATTR: []
+    });
+    if (ContactName == '') ContactName = 'Hmm, I shouldn\'t be able to do this...'
+    var ContactNumber = $(".phone-add-contact-number").val();
+    var ContactIban = $(".phone-add-contact-iban").val();
+
+    if (ContactName != "" && ContactNumber != "") {
+        $.post('https://qb-phone/AddNewContact', JSON.stringify({
+            ContactName: ContactName,
+            ContactNumber: ContactNumber,
+            ContactIban: ContactIban,
+        }), function(PhoneContacts){
+            QB.Phone.Functions.LoadContacts(PhoneContacts);
+        });
+        QB.Phone.Animations.TopSlideUp(".phone-add-contact", 250, -100);
+        setTimeout(function(){
+            $(".phone-add-contact-number").val("");
+            $(".phone-add-contact-name").val("");
+        }, 250)
+
+        if (SelectedSuggestion !== null) {
+            $.post('https://qb-phone/RemoveSuggestion', JSON.stringify({
+                data: $(SelectedSuggestion).data('SuggestionData')
+            }));
+            $(SelectedSuggestion).remove();
+            SelectedSuggestion = null;
+            var amount = parseInt(AmountOfSuggestions);
+            if ((amount - 1) === 0) {
+                amount = 0
+            }
+            $(".amount-of-suggested-contacts").html(amount + " contacts");
+        }
+    } else {
+        QB.Phone.Notifications.Add("fas fa-exclamation-circle", "Add Contact", "Fill out all fields!");
+    }
+});
 
 $(document).on('click', '.suggested-contact', function(e){
     e.preventDefault();
@@ -738,7 +845,26 @@ $(document).on('click', '.suggested-contact', function(e){
     $(".phone-add-contact-name").val(SuggestionData.name[0] + " " + SuggestionData.name[1]);
     $(".phone-add-contact-number").val(SuggestionData.number);
     $(".phone-add-contact-iban").val(SuggestionData.bank);
+    
 });
+
+$(document).on('click', '#volumeUp', function(e){
+    e.preventDefault();
+
+    $.post('https://qb-phone/volumeUp', JSON.stringify({
+        channel: $("#channel").val()
+    }));
+});
+
+$(document).on('click', '#volumeDown', function(e){
+    e.preventDefault();
+
+    $.post('https://qb-phone/volumeDown', JSON.stringify({
+        channel: $("#channel").val()
+    }));
+});
+
+
 
 $(document).on('click', '#box-new-cancel', function(e){
     e.preventDefault();

@@ -41,6 +41,7 @@
 .gallery-images {
     position: absolute;
     width: 85%;
+    background-color: white;
     height: 44.5vh;
     top: 10.5vh;
     margin: 0 auto;
@@ -59,6 +60,7 @@
 }
 
 .gallery-image {
+    border: .1vh solid white;
     display: inline-block;
     width: 50%;
     padding: 0.2vh;

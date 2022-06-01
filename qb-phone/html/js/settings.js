@@ -55,25 +55,25 @@ $(document).on('click', '#accept-background', function(e){
 });
 
 QB.Phone.Functions.LoadMetaData = function(MetaData) {
-    if (MetaData.background !== null && MetaData.background !== undefined) {
-        QB.Phone.Settings.Background = MetaData.background;
-    } else {
-        QB.Phone.Settings.Background = "default-QBCore";
-    }
+        if (MetaData.background !== null && MetaData.background !== undefined) {
+            QB.Phone.Settings.Background = MetaData.background;
+        } else {
+            QB.Phone.Settings.Background = "default-QBCore";
+        }
 
-    var hasCustomBackground = QB.Phone.Functions.IsBackgroundCustom();
+        var hasCustomBackground = QB.Phone.Functions.IsBackgroundCustom();
 
-    if (!hasCustomBackground) {
-        $(".phone-background").css({"background-image":"url('/html/img/backgrounds/"+QB.Phone.Settings.Background+".png')"})
-    } else {
-        $(".phone-background").css({"background-image":"url('"+QB.Phone.Settings.Background+"')"});
-    }
+        if (!hasCustomBackground) {
+            $(".phone-background").css({"background-image":"url('/html/img/backgrounds/"+QB.Phone.Settings.Background+".png')"})
+        } else {
+            $(".phone-background").css({"background-image":"url('"+QB.Phone.Settings.Background+"')"});
+        }
 
-    if (MetaData.profilepicture == "default") {
-        $("[data-settingstab='profilepicture']").find('.settings-tab-icon').html('<img src="./img/default.png">');
-    } else {
-        $("[data-settingstab='profilepicture']").find('.settings-tab-icon').html('<img src="'+MetaData.profilepicture+'">');
-    }
+        if (MetaData.profilepicture == "default") {
+            $("[data-settingstab='profilepicture']").find('.settings-tab-icon').html('<img src="./img/default.png">');
+        } else {
+            $("[data-settingstab='profilepicture']").find('.settings-tab-icon').html('<img src="'+MetaData.profilepicture+'">');
+        }
 }
 
 $(document).on('click', '#cancel-background', function(e){
