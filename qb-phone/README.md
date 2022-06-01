@@ -231,7 +231,7 @@ local WebHook = ""
         return false
     end
 ```
-
+```
 ## Change your `qb-smallresources/server/logs.lua` with this 
 ```
 local QBCore = exports['qb-core']:GetCoreObject()
