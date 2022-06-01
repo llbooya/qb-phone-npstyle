@@ -121,8 +121,16 @@ Set the following variable to your webhook (For example, a Discord channel or Im
 - Click Copy Webhook URL
 - Paste into `WebHook` in `server/main.lua`
 ```
-local WebHook = ""
+local WebHook = ""     PlayerData.metadata['phonelock'] = PlayerData.metadata['phonelock'] or false
 ```
+
+## To make phone open&close work
+- Go to qb-core/server/player.lua
+- Add this line into function QBCore.Player.CheckPlayerData(source, PlayerData)
+```
+    PlayerData.metadata['phonelock'] = PlayerData.metadata['phonelock'] or false
+```
+
 ## To fixed undefined reason in Wenmo
 - Go to qb-core/server/player.lua
 - Replace this
